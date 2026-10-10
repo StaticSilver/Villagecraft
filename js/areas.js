@@ -62,6 +62,7 @@ addArea("o",                                            // Function for adding a
         },
     ],
 
+
     crafts: [
         {
             name: "log",
