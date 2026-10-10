@@ -58,11 +58,6 @@ addArea("o",                                            // Function for adding a
                     time: [["", 0.6]],
                     probability: 50,
                 },
-                {
-                    id: "villager",
-                    time: [["", 0.5]],
-                    probability: 50,
-                },
             ]
         },
     ],
