@@ -24,16 +24,22 @@ addResources({                                          // Function for adding a
     "crafting table": {
         image: "images/craftingTable.png",
     },
-    "house": {
+    house: {
         image: "images/house.png",
     },
-    "villager": {
+    villager: {
         image: "images/villager.png",
     },
-    "stick": {
+    stick: {
         image: "images/stick.png",
     },
-    "axe": {
+    axe: {
+        image: "wip",
+    },
+    woodcutter: {
+        image: "wip",
+    },
+    stone: {
         image: "wip",
     }
 });
@@ -51,7 +57,7 @@ addArea("o",                                            // Function for adding a
         {
             name: "Surface",
             unlocked: true,
-            auto: [""],                         // List of items that will auto-grind this grind
+            auto: ["woodcutter"],                         // List of items that will auto-grind this grind
             background: "images/grinds/overworld.png",
             resources: [
                 {
@@ -77,12 +83,6 @@ addArea("o",                                            // Function for adding a
             cost: [["log", 0]],
         },
         {
-            name: "stone",
-            desc: "Used to craft houses and tools",
-            type: "display",
-            cost: [["stone", 0]],
-        },
-        {
             name: "dirt",
             desc: "Used to build a dirt hut",
             type: "display",
@@ -104,7 +104,7 @@ addArea("o",                                            // Function for adding a
         },
         {
             name: "axe",
-            desc: "Used to automatically gather materials from the surface",
+            desc: "Used to make villagers gather materials from the surface",
             type: "craft",
             cost: [["planks", 3], ["stick", 2]],
         },
@@ -125,14 +125,20 @@ addArea("o",                                            // Function for adding a
             name: "house",
             desc: "required to get villagers",
             type: "craft",
-            cost: [["oak", 40], ["door", 1]],
+            cost: [["oak", 20], ["door", 1], [stone, 10]]
         },
         {
             name: "villager",
             desc: "working class person",
             type: "craft",
-            cost: [["dirt hut", 1], ["crafting table", 1]],
+            cost: [["house", 1], ["crafting table", 1]],
         },
+        {
+            name: "woodcutter",
+            desc: "gathers materials from the surface",
+            type: "craft",
+            cost: [["villager", 1], ["axe", 1]],
+        }
     ],
 
     update(diff) {                                      // diff is the time in milliseconds since last time the update function was runned
