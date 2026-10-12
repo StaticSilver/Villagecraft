@@ -24,11 +24,17 @@ addResources({                                          // Function for adding a
     "crafting table": {
         image: "images/craftingTable.png",
     },
-    "dirt hut": {
-        image: "images/dirtHut.png",
+    "house": {
+        image: "images/house.png",
     },
-    villager: {
+    "villager": {
         image: "images/villager.png",
+    },
+    "stick": {
+        image: "images/stick.png",
+    },
+    "axe": {
+        image: "wip",
     }
 });
 
@@ -71,6 +77,12 @@ addArea("o",                                            // Function for adding a
             cost: [["log", 0]],
         },
         {
+            name: "stone",
+            desc: "Used to craft houses and tools",
+            type: "display",
+            cost: [["stone", 0]],
+        },
+        {
             name: "dirt",
             desc: "Used to build a dirt hut",
             type: "display",
@@ -82,6 +94,19 @@ addArea("o",                                            // Function for adding a
             type: "craft",
             amount: 4,
             cost: [["log", 1]],
+        },
+        {
+            name: "stick",
+            desc: "Used to craft tools for villagers",
+            type: "craft",
+            amount: 4,
+            cost: [["planks", 2]],
+        },
+        {
+            name: "axe",
+            desc: "Used to automatically gather materials from the surface",
+            type: "craft",
+            cost: [["planks", 3], ["stick", 2]],
         },
         {
             name: "crafting table",
@@ -97,10 +122,10 @@ addArea("o",                                            // Function for adding a
             cost: [["planks", 6]],
         },
         {
-            name: "dirt hut",
+            name: "house",
             desc: "required to get villagers",
             type: "craft",
-            cost: [["dirt", 10], ["door", 1]],
+            cost: [["oak", 40], ["door", 1]],
         },
         {
             name: "villager",
