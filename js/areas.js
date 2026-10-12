@@ -37,10 +37,10 @@ addResources({                                          // Function for adding a
         image: "wip",
     },
     woodcutter: {
-        image: "wip",
+        image: "images/woodcutter.png",
     },
     stone: {
-        image: "wip",
+        image: "images/cobblestone.png",
     }
 });
 
@@ -131,7 +131,7 @@ addArea("o",                                            // Function for adding a
             name: "house",
             desc: "required to get villagers",
             type: "craft",
-            cost: [["log", 20], ["door", 1]],
+            cost: [["planks", 20], ["door", 1], ["stone", 10]],
         },
         {
             name: "villager",
