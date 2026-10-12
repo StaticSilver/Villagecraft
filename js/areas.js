@@ -43,9 +43,9 @@ addArea("o",                                            // Function for adding a
 
     grinds: [
         {
-            name: "surface",
+            name: "Surface",
             unlocked: true,
-            auto: ["dirt hut"],                         // List of items that will auto-grind this grind
+            auto: [""],                         // List of items that will auto-grind this grind
             background: "images/grinds/overworld.png",
             resources: [
                 {
