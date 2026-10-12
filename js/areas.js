@@ -62,14 +62,14 @@ addArea("o",                                            // Function for adding a
             resources: [
                 {
                     id: "log",
-                    time: [["", 0.5]],
+                    time: [["", 0.5],["woodcutter", 0.45]],
                     probability: 50,
                 },
                 {
                     id: "dirt",
-                    time: [["", 0.6]],
+                    time: [["", 0.6],["woodcutter", 0.45]],
                     probability: 50,
-                },
+                }
             ]
         },
     ],
@@ -87,6 +87,12 @@ addArea("o",                                            // Function for adding a
             desc: "Used to build a dirt hut",
             type: "display",
             cost: [["dirt", 0]],
+        },
+        {
+            name: "stone",
+            desc: "Used to craft houses and tools",
+            type: "display",
+            cost: [["stone", 0]],
         },
         {
             name: "planks",
@@ -125,7 +131,7 @@ addArea("o",                                            // Function for adding a
             name: "house",
             desc: "required to get villagers",
             type: "craft",
-            cost: [["oak", 20], ["door", 1], [stone, 10]]
+            cost: [["log", 20], ["door", 1]],
         },
         {
             name: "villager",
@@ -139,6 +145,7 @@ addArea("o",                                            // Function for adding a
             type: "craft",
             cost: [["villager", 1], ["axe", 1]],
         }
+            
     ],
 
     update(diff) {                                      // diff is the time in milliseconds since last time the update function was runned
