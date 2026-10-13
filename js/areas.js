@@ -163,6 +163,12 @@ addArea("o",                                            // Function for adding a
             cost: [["planks", 3], ["stick", 2]],
         },
         {
+            name: "sword",
+            desc: "Used to arm the warrior and protect the village.",
+            type: "craft",
+            cost: [["planks", 3], ["stick", 2]],
+        },
+        {
             name: "pickaxe",
             desc: "Unlocks the Mines and speeds up manual stone gathering.",
             type: "craft",
@@ -237,9 +243,9 @@ addArea("o",                                            // Function for adding a
 // Function that will be runned when the website is loaded
 function onLoad(oldVersion) {
     // If the game version in the player's save is not the same as the current game version:
-    if (oldVersion !== player.gameInfo.version) {
+    if (oldVersion !== undefined && oldVersion !== player.gameInfo.version) {
         // Write it to the console
         console.log(oldVersion);
-        showMessage("DIFFERENT VERSION DETECTED\nSave changed from " + oldVersion + "to " + player.gameInfo.version +"."); //Villagecraft alerts the change directly to the player
+        showMessage("DIFFERENT VERSION DETECTED\nSave changed from " + oldVersion + " to " + player.gameInfo.version + "."); //Villagecraft alerts the change directly to the player
     }
 }

@@ -122,6 +122,9 @@ function addArea(id, contents) {
 // Set the game info
 function setGameInfo(info) {
     player.gameInfo = info;
+    if (info && info.version !== undefined && info.gameVersion === undefined) {
+        info.gameVersion = info.version;
+    }
 }
 
 // Get saved data

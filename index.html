@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     
     <title></title>
-    <link id="iconLink" rel="icon" type="image/x-icon" href=""#>
+    <link id="iconLink" rel="icon" type="image/x-icon" href="images/system/blank.png">
 
     <link rel="stylesheet" type="text/css" href="css/grindcraft.css">
 
@@ -114,7 +114,7 @@
     setupGame();
 
     // Check if there is a saved game version and tool version
-    if (player.savedGameVersion === undefined) player.savedGameVersion = player.gameInfo.gameVersion;
+    if (player.savedGameVersion === undefined) player.savedGameVersion = player.gameInfo.version;
     if (player.savedToolVersion === undefined) player.savedToolVersion = player.toolVersion;
 
     // Fix things that have been changed between updates
