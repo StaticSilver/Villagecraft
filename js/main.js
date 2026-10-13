@@ -1,4 +1,5 @@
 // Player object
+
 let player = {
     currentArea: 0,
     toolVersion: "1.1.2",
@@ -68,47 +69,35 @@ let showGrindMatsInputEl = document.querySelector("#showGrindMaterialsInput");
 let showCraftRecipesInputEl = document.querySelector("#showCraftRecipesInput");
 let enableAutobuysInputEl = document.querySelector("#enableAutobuysInput");
 let autoSaveInputEl = document.querySelector("#autoSaveInput");
-let importSaveinputEl = document.querySelector("#importSaveInput");
-let importSaveButtonEl = document.querySelector("#importSaveButton");
-let copySaveButtonEl = document.querySelector("#copySaveButton");
 let resetSaveButtonEl = document.querySelector("#resetSaveButton");
 let saveButtonEl = document.querySelector("#saveButton");
-
-let toolVersionTextEl = document.querySelector("#toolVersion");
 
 messageButtonEl.addEventListener("click", hideMessage);
 settingsButtonEl.addEventListener("click", hideSettings);
 settingsTopButtonEl.addEventListener("click", showSettings);
-copySaveButtonEl.addEventListener("click", copySave);
-importSaveButtonEl.addEventListener("click", importSave);
 resetSaveButtonEl.addEventListener("click", resetSave);
 saveButtonEl.addEventListener("click", saveGame);
 
-toolVersionTextEl.innerHTML = `(Version ${player.toolVersion})`;
-
 // Setting values
-maxFPSInputEl.addEventListener("mousemove", () => {
+maxFPSInputEl.addEventListener("input", () => {
     maxFPSLabelEl.innerText = maxFPSInputEl.value;
-});
-
-maxFPSInputEl.addEventListener("change", () => {
     player.maxFPS = Number(maxFPSInputEl.value);
 });
 
 showGrindMatsInputEl.addEventListener("change", () => {
-    player.showGrindMats = !player.showGrindMats;
+    player.showGrindMats = showGrindMatsInputEl.checked;
 });
 
 showCraftRecipesInputEl.addEventListener("change", () => {
-    player.showCraftRecipes = !player.showCraftRecipes;
+    player.showCraftRecipes = showCraftRecipesInputEl.checked;
 });
 
 enableAutobuysInputEl.addEventListener("change", () => {
-    player.enableAutobuys = !player.enableAutobuys;
+    player.enableAutobuys = enableAutobuysInputEl.checked;
 });
 
 autoSaveInputEl.addEventListener("change", () => {
-    player.autoSave = !player.autoSave;
+    player.autoSave = autoSaveInputEl.checked;
 });
 
 // Add area to the player object
@@ -944,57 +933,6 @@ function showSettings() {
 // Hide settings
 function hideSettings() {
     settingsDivEl.style.display = "none";
-}
-
-// Copy save
-function copySave() {
-    // Get the text to copy
-    let copyText = JSON.stringify({
-        resources: player.resources,
-
-        maxFPS: player.maxFPS,
-        showGrindMats: player.showGrindMats,
-        showCraftRecipes: player.showCraftRecipes,
-        enableAutobuys: player.enableAutobuys,
-        autoSave: player.autoSave,
-
-        currentArea: player.currentArea,
-        toolVersion: player.toolVersion,
-        gameVersion: player.gameInfo.version,
-        unlockedAreas: player.unlockedAreas,
-        unlockedGrinds: player.unlockedGrinds,
-
-        variables: player.variables.normal,
-    });
-
-    copyText = encodeSave(copyText);
-
-    // Create a textfield and set the text
-    let copyEl = document.createElement("textarea");
-    copyEl.innerHTML = copyText;
-
-    // Select the textfield
-    copyEl.select();
-    copyEl.setSelectionRange(0, 999999); // For mobile devices
-
-    // Copy the text inside the textfield
-    navigator.clipboard.writeText(copyEl.value);
-}
-
-// Import save
-function importSave() {
-    // If there is no import value: Return
-    if (!importSaveinputEl.value) {
-        return;
-    }
-
-    // Get the value and clear the input element
-    let saveImport = importSaveinputEl.value;
-    importSaveinputEl.value = "";
-
-    // Get saved data from save and set up game
-    getSavedData(saveImport);
-    setupGame();
 }
 
 // Reset save

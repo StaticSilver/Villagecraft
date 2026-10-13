@@ -3,7 +3,7 @@ setGameInfo({
     name: "Villagecraft",                         // The name of your game!
     version: "0.1",                                     // The current version of your game!
     icon: "images/system/blank.png",                    // Link or path to an icon image for your game!
-    ID: "GCRedux",                             // Your game's ID! Should be unique for every game!
+    ID: "villagecraft",                             // Your game's ID! Should be unique for every game!
 });
 
 // Resources
@@ -36,12 +36,34 @@ addResources({                                          // Function for adding a
     axe: {
         image: "wip",
     },
-    woodcutter: {
+    pickaxe: {
+        image: "wip",
+    },
+    forester: {
         image: "images/woodcutter.png",
     },
     stone: {
         image: "images/cobblestone.png",
+    },
+    miner: {
+        image: "images/miner.png",
+    },
+    farmer: {
+        image: "wip",
+    },
+    wheat: {
+        image: "wip",
+    },
+    hoe: {
+        image: "wip",
+    },
+    sword: {
+        image: "wip",
+    },
+    warrior: {
+        image: "wip",
     }
+
 });
 
 // Areas
@@ -57,18 +79,44 @@ addArea("o",                                            // Function for adding a
         {
             name: "Surface",
             unlocked: true,
-            auto: ["woodcutter"],                         // List of items that will auto-grind this grind
+            auto: ["forester"],                         // List of items that will auto-grind this grind
             background: "images/grinds/overworld.png",
             resources: [
                 {
                     id: "log",
-                    time: [["", 0.5],["woodcutter", 0.45]],
+                    time: [["forester", 0.45], ["", 0.5]],
                     probability: 50,
                 },
                 {
                     id: "dirt",
-                    time: [["", 0.6],["woodcutter", 0.45]],
+                    time: [["forester", 0.45], ["", 0.6]],
                     probability: 50,
+                }
+            ]
+        },
+        {
+            name: "Mines",
+            unlocked: false,
+            auto: ["miner"],
+            background: "images/grinds/forest.png",
+            resources: [
+                {
+                    id: "stone",
+                    time: [["miner", 0.8], ["pickaxe", 0.8]],
+                    probability: 100,
+                }
+            ]
+        },
+        {
+            name: "Fields",
+            unlocked: false,
+            auto: ["farmer"],
+            background: "images/grinds/farm.png",
+            resources: [
+                {
+                    id: "wheat",
+                    time: [["farmer", 1], ["hoe", 1]],
+                    probability: 100,
                 }
             ]
         },
@@ -115,6 +163,20 @@ addArea("o",                                            // Function for adding a
             cost: [["planks", 3], ["stick", 2]],
         },
         {
+            name: "pickaxe",
+            desc: "Unlocks the Mines and speeds up manual stone gathering.",
+            type: "craft",
+            cost: [["planks", 3], ["stick", 2]],
+            unlockGrinds: ["Mines"],
+        },
+        {
+            name: "hoe",
+            desc: "Unlocks the fields.",
+            type: "craft",
+            cost: [["planks", 2], ["stick", 2]],
+            unlockGrinds: ["Fields"],
+        },
+        {
             name: "crafting table",
             desc: "Required to build a dirt hut",
             type: "craft",
@@ -140,11 +202,29 @@ addArea("o",                                            // Function for adding a
             cost: [["house", 1], ["crafting table", 1]],
         },
         {
-            name: "woodcutter",
+            name: "forester",
             desc: "gathers materials from the surface",
             type: "craft",
             cost: [["villager", 1], ["axe", 1]],
-        }
+        },
+        {
+            name: "miner",
+            desc: "gathers materials from the mines",
+            type: "craft",
+            cost: [["villager", 1], ["pickaxe", 1]],
+        },
+        {
+            name: "farmer",
+            desc: "I'M SENDING YOU TO WORK ON THE FIELDS!",
+            type: "craft",
+            cost: [["villager", 1], ["hoe", 1]],
+        },
+        {
+            name: "warrior",
+            desc: "he has a diary, and he's 8-bit",
+            type: "craft",
+            cost: [["villager", 1], ["sword", 1]],
+        },
             
     ],
 
@@ -160,5 +240,6 @@ function onLoad(oldVersion) {
     if (oldVersion !== player.gameInfo.version) {
         // Write it to the console
         console.log(oldVersion);
+        showMessage("DIFFERENT VERSION DETECTED\nSave changed from " + oldVersion + "to " + player.gameInfo.version +"."); //Villagecraft alerts the change directly to the player
     }
 }
