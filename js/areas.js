@@ -84,12 +84,12 @@ addArea("o",                                            // Function for adding a
             resources: [
                 {
                     id: "log",
-                    time: [["forester", 0.45], ["", 0.5]],
+                    time: [["forester", 0.5], ["", 0.5]],
                     probability: 50,
                 },
                 {
                     id: "dirt",
-                    time: [["forester", 0.45], ["", 0.6]],
+                    time: [["forester", 0.5], ["", 0.5]],
                     probability: 50,
                 }
             ]
@@ -102,7 +102,7 @@ addArea("o",                                            // Function for adding a
             resources: [
                 {
                     id: "stone",
-                    time: [["miner", 0.8], ["pickaxe", 0.8]],
+                    time: [["miner", 1.0], ["pickaxe", 1.0]],
                     probability: 100,
                 }
             ]
@@ -115,7 +115,7 @@ addArea("o",                                            // Function for adding a
             resources: [
                 {
                     id: "wheat",
-                    time: [["farmer", 1], ["hoe", 1]],
+                    time: [["farmer", 1.0], ["hoe", 1.0]],
                     probability: 100,
                 }
             ]
